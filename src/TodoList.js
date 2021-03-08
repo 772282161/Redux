@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 // import store from './store/index';
 import store from './store';
-import {CHANGE_INPUT,ADD_ITEM,DELETE_ITEM,GET_LIST} from './store/actionTypes';
-import {addItemAction, changeInputAction, deleteItemAction,getListAction} from './store/actionCreators'
+// import {CHANGE_INPUT,ADD_ITEM,DELETE_ITEM,GET_LIST} from './store/actionTypes';
+import {getTodoList,addItemAction, changeInputAction, deleteItemAction} from './store/actionCreators'
 import TodoListUI from './TodoListUI'
-import axios from 'axios'
 
 
-const data=[
-    '早八点开晨会，分配今天的代码任务',
-    '早九点和项目经理开需求沟通会',
-    '早九点和项目经理开需求沟通会',
 
-]
+// const data=[
+//     '早八点开晨会，分配今天的代码任务',
+//     '早九点和项目经理开需求沟通会',
+//     '早九点和项目经理开需求沟通会',
+
+// ]
 
 class TodoList extends Component {
 
@@ -60,11 +60,8 @@ class TodoList extends Component {
     }
 
     componentDidMount(){//生命周期函数
-        axios.get('https://www.easy-mock.com/mock/5cfcce489dc7c36bd6da2c99/xiaojiejie/getList').then((res)=>{
-            const data = res.data
-            const action = getListAction(data)
-            store.dispatch(action)
-        })
+        const action = getTodoList()
+        store.dispatch(action)
     }
 
     render() { 
