@@ -4,7 +4,8 @@ const defaultState = {
     inputValue : 'Write Something',
     list:[]
 }
-export default (state = defaultState,action) =>{ // 就是一个方法函数
+// eslint-disable-next-line
+ export default (state = defaultState,action) =>{ // 就是一个方法函数
     //Reducer 里只能接收state
     if(action.type === CHANGE_INPUT){
         let newState = JSON.parse(JSON.stringify(state))//深度拷贝state

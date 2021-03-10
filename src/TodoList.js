@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import store from './store/index';
 import store from './store';
 // import {CHANGE_INPUT,ADD_ITEM,DELETE_ITEM,GET_LIST} from './store/actionTypes';
-import {getTodoList,addItemAction, changeInputAction, deleteItemAction} from './store/actionCreators'
+import {addItemAction, changeInputAction, deleteItemAction,getMyListAction} from './store/actionCreators'
 import TodoListUI from './TodoListUI'
 
 
@@ -59,10 +59,16 @@ class TodoList extends Component {
         store.dispatch(action)
     }
 
-    componentDidMount(){//生命周期函数
-        const action = getTodoList()
+    // componentDidMount(){//生命周期函数
+    //     const action = getTodoList()
+    //     store.dispatch(action)
+    // }
+    componentDidMount(){
+        const action =getMyListAction()
         store.dispatch(action)
+        
     }
+    
 
     render() { 
         return ( 
@@ -73,7 +79,7 @@ class TodoList extends Component {
             list = {this.state.list}
             deleteItem = {this.deleteItem}
             />
-        );
+        );//redux-thunk 中间件
     }
 }
 
